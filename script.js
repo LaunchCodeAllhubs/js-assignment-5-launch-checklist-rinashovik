@@ -14,7 +14,7 @@ window.addEventListener("load", function() {
 		copilot = document.querySelector("input[name=copilotName]");
 		fuelLevel = document.querySelector("input[name=fuelLevel]");
 		cargoLevel = document.querySelector("input[name=cargoMass]");
-		let missionTarget = missionTarget.getElementById("missionTarget");
+	    missionTarget = document.getElementById("missionTarget");
 
 
 		formSubmission(document, list, pilot.value, copilot.value, fuelLevel.value, cargoLevel.value)
@@ -48,7 +48,7 @@ window.addEventListener("load", function() {
 		// Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
 
 		
-		missionPlanet = pickPlanet(listedPlanets) // Randomely-selected
+		missionPlanet = pickPlanet(listedPlanets); // Randomely-selected
 
 
 		// console.log(missionPlanet.name);

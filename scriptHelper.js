@@ -6,8 +6,7 @@ require('isomorphic-fetch');
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
 	// Here is the HTML formatting for our mission target div.
 
-	//missionTarget = document.getElementById("missionTarget");
-
+	missionTarget = document.getElementById("missionTarget");
 
 	missionTarget.innerHTML = `<h2>Mission Destination</h2>
 	<ol>
@@ -89,13 +88,15 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 	// alert("CargoLevel: " + cargoLevel.value);
 
 
-	if (pilot.value === "" || copilot.value === "" || fuelLevel.value === "" || cargoLevel.value === "") {
-		alert("All fields are required!");
-		//event.preventDefault(); //stop submit form
-	// } else {
-	 	//alert("Form submited  ");
-	 }
-	//  if (((pilot.value && copilot.value) === String) && (isNaN(fuelLevel.value && cargoLevel.value) === false)) {
+	//if (pilot.value === "" || copilot.value === "" || fuelLevel.value === "" || cargoLevel.value === "") {
+	// 	if ( cargoLevel.value === "") {
+
+	// 	alert("All fields are required!");
+	// 	//event.preventDefault(); //stop submit form
+	// // } else {
+	//  	//alert("Form submited  ");
+	//  }
+	// //  if (((pilot.value && copilot.value) === String) && (isNaN(fuelLevel.value && cargoLevel.value) === false)) {
 	// 	alert("Form submited ");
 	// }
 
@@ -125,7 +126,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 	// if (((pilot.value && copilot.value) === String) && (isNaN(fuelLevel.value && cargoLevel.value) === false)) {
 	// 	alert("Form submited ");
 	// }
-	if (pilot.value === "" || copilot.value === "" || fuelLevel.value === "" || cargoLevel.value === "") {
+	if (cargoLevel.value === "") {
 		alert("All fields are required!");
 		//event.preventDefault(); //stop submit form
 	// } else {
@@ -142,14 +143,17 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 	let fuelStatus = document.getElementById("fuelStatus");
 	let cargoStatus = document.getElementById("cargoStatus");
 
-	pilotStatus.innerHTML = `Pilot ${pilot.value} Ready`;
-	copilotStatus.innerHTML = `Co-pilot ${copilot.value} Ready`;
+	pilotStatus.innerHTML = `Pilot ${pilot.value} is Ready for launch`;
+	copilotStatus.innerHTML = `Co-pilot ${copilot.value} is Ready for launch`;
 
 	if (fuelLevel.value < 10000) {
 		list.style.visibility = "visible";
 		fuelStatus.textContent = `Fuel level too low for launch`;
 		launchStatus.textContent = `Shuttle not ready for launch`;
 		launchStatus.style.color = "red";
+		pilotStatus.innerHTML = `Pilot ${pilot.value} Ready`;
+		copilotStatus.innerHTML = `Co-pilot ${copilot.value} Ready`;
+		cargoStatus.textContent = `Cargo mass low enough for launch`;
 		// console.log(launchStatus.textContent);
 		// console.log(fuelStatus.innerHtml);
 		// console.log(launchStatus.style.color);
@@ -158,11 +162,15 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 	} 
 
-	if (fuelLevel.value === 890 && cargoLevel.value < 10000) {
+	if (fuelLevel.value === 890 && cargoLevel.value > 10000) {
 		list.style.visibility = "visible";
-		fuelStatus.textContent = `Not enough fuel for the shuttle to launch`;
+		pilotStatus.innerHTML = `Pilot ${pilot.value} is Ready for launch`;
+		copilotStatus.innerHTML = `Co-pilot ${copilot.value} is Ready`;
+		fuelStatus.textContent = `Fuel level too low for launch`;
+		cargoStatus.textContent = `Cargo mass too heavy for launch`;
+
 		launchStatus.textContent = `Shuttle not ready for launch`;
-		launchStatus.style.color = "red";
+		launchStatus.style.color = "rgb(199, 37, 78)";
 		// console.log(launchStatus.textContent);
 		// console.log(fuelStatus.innerHtml);
 		// console.log(launchStatus.style.color);
@@ -172,8 +180,13 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 	}
 	if (cargoLevel.value > 10000) {
 		list.style.visibility = "visible";
-		cargoStatus.textContent = `Cargo mass too much for launch`;
+		pilotStatus.innerHTML = `Pilot ${pilot.value} is Ready for launch`;
+		copilotStatus.innerHTML = `Co-pilot ${copilot.value} is Ready`;
+		fuelStatus.textContent = `Fuel level high enough for launch`;
+
+		cargoStatus.textContent = `Cargo mass too heavy for launch`;
 		launchStatus.textContent = `Shuttle not ready for launch`;
+
 		launchStatus.style.color = "#C7254E"; //OR  rgb(199, 37, 78); 
 		// console.log(launchStatus.textContent);
 		// console.log(cargoStatus.innerHTML);
@@ -187,17 +200,19 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 		// pilotStatus.innerHTML === `Pilot ${pilot.value} Ready`;
 		// copilotStatus.innerHTML = `Co-pilot ${copilot.value} Ready`;
+
 		if (fuelLevel.value > 10000 && cargoLevel.value < 10000 && cargoLevel.value !== "") {//} && (isNaN(pilot.value && copilot.value) === true) && (isNaN(fuelLevel.value && cargoLevel.value) === false)){
       // if ((fuelLevel.value > 10000 && cargoLevel.value < 10000) && isNaN(pilot.value && copilot.value) === true){
             list.style.visibility = "visible";
+			pilotStatus.innerHTML = `Pilot ${pilot.value} is Ready for launch`;
+			copilotStatus.innerHTML = `Co-pilot ${copilot.value} is Ready for launch`;
+			fuelStatus.textContent = `Fuel level high enough for launch`;
 
-		//fuelStatus.textContent = `Fuel level high enough for launch`;
-
-		//cargoStatus.textContent = `Cargo mass low enough for launch`;
-		launchStatus.style.color = "#419F6A"; // rgb(65, 159, 106)";
-		launchStatus.textContent = `Shuttle is ready for launch`;
-		alert(`Everything is good to go`)
-		alert(launchStatus.textContent);
+			cargoStatus.textContent = `Cargo mass low enough for launch`;
+			launchStatus.style.color = "#419F6A"; // rgb(65, 159, 106)";
+			launchStatus.textContent = `Shuttle is ready for launch`;
+			alert(`Everything is good to go`)
+			alert(launchStatus.textContent);
 
 
 
