@@ -4,22 +4,9 @@ window.addEventListener("load", function() {
 	
 	
 	document;
-		list = document.getElementById("faultyItems");
+	list = document.getElementById("faultyItems");
 
-		console.log(list)
-
-		
-		let form = document.querySelector("form");
-
-	
-	form.addEventListener("submit", function(event) {
-
-
-		pilot = document.getElementById("pilotName");
-		copilot = document.querySelector("input[name=copilotName]");
-		fuelLevel = document.querySelector("input[name=fuelLevel]");
-		cargoLevel = document.querySelector("input[name=cargoMass]");
-		missionTarget = document.getElementById("missionTarget");
+	//console.log(list)
 
 		pilotStatus = document.getElementById("pilotStatus");
 		copilotStatus = document.getElementById("copilotStatus");
@@ -27,6 +14,19 @@ window.addEventListener("load", function() {
 		launchStatus = document.getElementById("launchStatus"); // h2 heading
 		fuelStatus = document.getElementById("fuelStatus");
 		cargoStatus = document.getElementById("cargoStatus");
+		let form = document.querySelector("form");
+
+	
+	form.addEventListener("submit", function(event) {
+
+		event.preventDefault();
+		pilot = document.getElementById("pilotName");
+		copilot = document.querySelector("input[name=copilotName]");
+		fuelLevel = document.querySelector("input[name=fuelLevel]");
+		cargoLevel = document.querySelector("input[name=cargoMass]");
+		missionTarget = document.getElementById("missionTarget");
+
+		
 
 		pilot.value = pilot.value;
 		copilot.value = copilot.value;
@@ -37,9 +37,9 @@ window.addEventListener("load", function() {
 
 		formSubmission(document, list, pilot.value, copilot.value, fuelLevel.value, cargoLevel.value);
 
-		event.preventDefault();
+		
 
-
+	})
 		//console.log(myFetch());
 
 		let listedPlanets;
@@ -53,7 +53,7 @@ window.addEventListener("load", function() {
 
 		}).then(function() {
 
-			console.log(listedPlanets)
+			console.log(listedPlanets);
 
 			// Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
 
@@ -70,5 +70,7 @@ window.addEventListener("load", function() {
 
 
 
-	});
+	//});
 });
+
+
