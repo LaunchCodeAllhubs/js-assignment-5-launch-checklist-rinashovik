@@ -57,12 +57,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 	// Create DOM objects for form elements
 	document; // = document;
-	// list = document.getElementById("faultyItems");
 	// pilot = document.querySelector("input[name=pilotName]");
 	// copilot = document.querySelector("input[name=copilotName]");
 	// fuelLevel = document.querySelector("input[name=fuelLevel]");
 	// cargoLevel = document.querySelector("input[name=cargoMass]");
-
+		
+	list = document.getElementById("faultyItems");
 	pilotStatus = document.getElementById("pilotStatus");
 	copilotStatus = document.getElementById("copilotStatus");
 	launchStatusCheck = document.getElementById("launchStatusCheck");
@@ -118,25 +118,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 	}else{
 
-	//console.logs(list);
-
-		// pilotStatus.innerHTML = `Pilot Chris is ready for launch`;
-		// copilotStatus.innerHTML = `Co-pilot Bob is ready for launch`;
+	
 		list.style.visibility = "visible";
 
 		pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
 		copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
-
-	/*	list.innerHTML = `<div  id="faultyItems" data-testid="faultyItems">
-                <ol>
-                    <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot.value} Ready</li>
-                    <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot.value} Ready</li>
-                    <li id="fuelStatus" data-testid="fuelStatus">Fuel level high enough for launch</li>
-                    <li id="cargoStatus" data-testid="cargoStatus">Cargo mass low enough for launch</li>
-                </ol>
-            </div>`;
-*/
-			//console.log(list)
 
 			
 	if (fuelLevel < 10000) {
@@ -145,7 +131,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 		cargoStatus.textContent = `Cargo mass low enough for launch`;
 
 		launchStatus.textContent = `Shuttle Not Ready for Launch`;
-		launchStatus.style.color = "rgb(199, 37, 78)"; //;// changing from "red"; Checked
+		launchStatus.style.color = "rgb(199, 37, 78)"; 
 		console.log(cargoStatus.textContent);//PASS
 
 
@@ -153,11 +139,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 	if (cargoLevel > 10000) {
 		list.style.visibility = "visible";
-		// pilotStatus.innerHTML = `Pilot Chris is ready for launch`;
-		// copilotStatus.innerHTML = `Co-pilot Bob is ready for launch`;
-		// //pilotStatus.innerHTML = `Pilot ${pilot.value} is ready for launch`;
-		//copilotStatus.innerHTML = `Co-pilot ${copilot.value} is ready for launch`;
-		//fuelStatus.textContent = `Fuel level high enough for launch`;
+		fuelStatus.textContent = `Fuel level high enough for launch`;
 
 		cargoStatus.textContent = `Cargo mass too heavy for launch`;
 		launchStatus.textContent = `Shuttle Not Ready for Launch`;
@@ -169,9 +151,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 	}
 
 	if (fuelLevel < 10000 && cargoLevel > 10000) {
-		//list.style.visibility = "visible";
-		// pilotStatus.innerHTML = `Pilot ${pilot.value} is ready for launch`;
-		// copilotStatus.innerHTML = `Co-pilot ${copilot.value} is ready for launch`;
+		
 		fuelStatus.textContent = `Fuel level too low for launch`;
 
 		cargoStatus.textContent = `Cargo mass too heavy for launch`;
@@ -205,27 +185,20 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 	if (fuelLevel> 10000 && cargoLevel < 10000){//} && (isNaN(pilot.value && copilot.value) === true) && (isNaN(fuelLevel.value && cargoLevel.value) === false)) {
 		// if ((fuelLevel.value > 10000 && cargoLevel.value < 10000) && isNaN(pilot.value && copilot.value) === true){
-		//list.style.visibility = "visible";
-		//pilotStatus.innerHTML = `Pilot ${pilot.value} is ready for launch`;
-		//copilotStatus.innerHTML = `Co-pilot ${copilot.value} is ready for launch`;
-		// pilotStatus.innerHTML = `Pilot Chris is ready for launch`;
-		// copilotStatus.innerHTML = `Co-pilot Bob is ready for launch`;
+			list.style.visibility = "visible";
+
 		fuelStatus.textContent = `Fuel level high enough for launch`;
 		cargoStatus.textContent = `Cargo mass low enough for launch`;
 		launchStatus.style.color = "rgb(65, 159, 106)";
 		launchStatus.textContent = `Shuttle is Ready for Launch`;//pass
-		//console.log(list)
-
+console.log(cargoStatus.textContent)
 
 	}
 
-
-
-
-
-
 	console.log(list)
 }
+
+
 }
 
 // console.log(myFetch());

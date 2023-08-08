@@ -5,8 +5,9 @@ window.addEventListener("load", function() {
 	
 	document;
 	list = document.getElementById("faultyItems");
+	list.style.visibility= "hidden";
 
-	//console.log(list)
+	console.log(list)
 
 		pilotStatus = document.getElementById("pilotStatus");
 		copilotStatus = document.getElementById("copilotStatus");
@@ -37,9 +38,11 @@ window.addEventListener("load", function() {
 
 		formSubmission(document, list, pilot.value, copilot.value, fuelLevel.value, cargoLevel.value);
 
-		
+		console.log(fuelStatus.textContent)
 
-	})
+		console.log(cargoStatus.textContent)
+
+	//})
 		//console.log(myFetch());
 
 		let listedPlanets;
@@ -68,9 +71,7 @@ window.addEventListener("load", function() {
 		})
 
 
-
-
-	//});
+	});
 });
 
 
