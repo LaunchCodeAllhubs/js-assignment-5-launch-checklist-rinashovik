@@ -183,9 +183,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 
 
-	if (fuelLevel> 10000 && cargoLevel < 10000){//} && (isNaN(pilot.value && copilot.value) === true) && (isNaN(fuelLevel.value && cargoLevel.value) === false)) {
+	if (fuelLevel>= 10000 && cargoLevel < 10000){//} && (isNaN(pilot.value && copilot.value) === true) && (isNaN(fuelLevel.value && cargoLevel.value) === false)) {
 		// if ((fuelLevel.value > 10000 && cargoLevel.value < 10000) && isNaN(pilot.value && copilot.value) === true){
-			list.style.visibility = "visible";
+			//list.style.visibility = "visible";
 
 		fuelStatus.textContent = `Fuel level high enough for launch`;
 		cargoStatus.textContent = `Cargo mass low enough for launch`;
